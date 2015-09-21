@@ -9,40 +9,56 @@ void main()
 	char type;
 	int rows;
 	int boolean = 0; //True
-	do{
+	int i,j;
 	menu_choices();
 	scanf("%c", &choice);
-	switch(choice)
-	{
-		case 'C':
-		case 'c':
-			printf("Enter your character\t\t");
-			scanf(" %c",&character);
-			break;
-			
-		case 'N':
-		case 'n':
-			printf("Enter your number\t\t");
-			scanf(" %c",&number);
-			break;
-		case '1':
-			printf("Dis shit going up");
-			int i,j;
-			for(i=1;i<=number;++i)
+	while(choice != 'Q')
+	{	
+		if (choice != '\n')
+		{
+			switch(choice)
 			{
-				for(j=1;j<=i;++j)
-				{
-					printf("%c ",character);
-				}
-				printf("\n");
+				case 'C':
+				case 'c':
+					printf("Enter your character\t\t");
+					scanf(" %c",&character);
+					break;
+					
+				case 'N':
+				case 'n':
+					printf("Enter your number\t\t");
+					scanf("%c ",&number);
+					rows = number - '0';
+					break;
+				case '1':
+					for(i=0;i<rows;++i)
+					{
+						for(j=0;j<i;++j)
+						{
+							printf("%c ",character);
+						}
+						printf("\n");
+					}
+				case '2':
+					for(i=0;i<rows;++i)
+					{
+						for(j=0;j<i;++j)
+						{
+							printf("%c ",character);
+						}
+						printf("\n");
+					}
+					printf("\n");
+					break;
+				case 'Q':
+				case 'q':
+					boolean = 1;
+					choice = 'Q';
 			}
-			break;
-		case 'Q':
-			boolean = 1;
+		}
+		menu_choices();
+		scanf(" %c", &choice);
 	}
-	}while(choice!= 'Q');
-		
-
 }
 
 void menu_choices()
